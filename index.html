@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Unified Apps Launcher</title>
+    <style>
+      :root{--header:#0f172a;--accent:#1e3a8a}
+      html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial}
+      header{background:var(--header);color:#fff;padding:12px 16px;display:flex;gap:8px;align-items:center}
+      header .brand{font-weight:700;margin-right:12px}
+      header button{background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 10px;border-radius:6px;cursor:pointer}
+      header button.active{background:var(--accent)}
+      main{height:calc(100% - 56px)}
+      iframe{width:100%;height:100%;border:0}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">Unified Launcher</div>
+      <button data-src="SMAP-HUGE-PROJECT-3-main/index.html">SMAP HUGE</button>
+      <button data-src="Copy-of-SSMapMOCKExamination-ANALYTICS---22suc-main/index.html">SSMap MOCK</button>
+      <button data-src="ExercisesAssessmentandReportingsimpler-2-main/ExercisesAssessmentandReportingsimpler-2-main/index.html">Exercises Assessment</button>
+    </header>
+    <main>
+      <iframe id="app-frame" src="SMAP-HUGE-PROJECT-3-main/index.html" title="app-frame"></iframe>
+    </main>
+    <script>
+      const buttons = Array.from(document.querySelectorAll('header button'));
+      const frame = document.getElementById('app-frame');
+      function setActive(btn){ buttons.forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
+      buttons.forEach((b,i)=>{
+        b.addEventListener('click', ()=>{ const src=b.getAttribute('data-src'); frame.src=src; setActive(b); });
+        if(i===0) setActive(b);
+      });
+    </script>
+  </body>
+</html>

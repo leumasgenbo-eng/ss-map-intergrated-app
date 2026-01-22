@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "integrated-app/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    { "src": "^/integrated-app/(.*)", "dest": "/integrated-app/dist/$1" },
+    { "src": "^/(.*)$", "dest": "/integrated-app/dist/$1" },
+    { "src": "^/$", "dest": "/integrated-app/dist/index.html" }
+  ]
+}
